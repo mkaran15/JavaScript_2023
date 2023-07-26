@@ -95,6 +95,16 @@ let undefinedToString = undefined;
 //console.log(undefinedToString.toString()); //TypeError: Cannot read properties of undefined (reading 'toString')
 console.log(String(undefinedToString)); //undefined
 
+//trim() -> Trims whitespace from the beginning and end of the string.
+let lastName = "       Maheshwari      "
+console.log(lastName); // '       Maheshwari      ' 
+console.log(lastName.trim()); // 'Maheshwari'
+
+//slice() -> Extracts a section of a string and returns a new string.
+
+fullName="Karan Maheshwari";
+console.log(`First Name: ${fullName.slice(0,5)}`); //First Name: Karan
+
 
 
 
