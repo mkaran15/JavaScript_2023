@@ -82,8 +82,18 @@ It is in the range 0xDC00–0xDFFF, inclusive (i.e. is a low surrogate), but it 
 
 */
 
+/*
+Notes:
+It's possible to use String as a more reliable toString() alternative, 
+as it works when used on null and undefined.
+*/
+let nullToString = null;
+//console.log(nullToString.toString()); //TypeError: Cannot read properties of null (reading 'toString')
+console.log(String(nullToString)); //null
 
-
+let undefinedToString = undefined;
+//console.log(undefinedToString.toString()); //TypeError: Cannot read properties of undefined (reading 'toString')
+console.log(String(undefinedToString)); //undefined
 
 
 
