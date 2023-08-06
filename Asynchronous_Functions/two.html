@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeOut</title>
+</head>
+<body>
+    <h1 id="greetings">Hey, What's up?</h1>
+    <button id="close">Stop Changing</button>
+</body>
+<script>
+const timeoutId = setTimeout(()=>{
+    document.getElementById('greetings').innerHTML='I am good.'
+}, 5000)
+
+document.getElementById('close').addEventListener('click', () => {
+    clearTimeout(timeoutId);
+})
+
+</script>
+</html>
