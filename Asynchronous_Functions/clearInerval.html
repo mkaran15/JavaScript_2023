@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="hello">We will try to clear Interval using stop button</h1>
+    <button id="clear">Stop Interval</button>
+</body>
+    <script>
+
+       let newvalue =  function(){
+        let d = new Date();
+        document.getElementById('hello').innerHTML = `Change happening at ${d.toLocaleTimeString()}`
+    } 
+    const intervalId = setInterval(newvalue, 1000);  
+    document.getElementById('clear').addEventListener('click', () => {
+        clearInterval(intervalId);
+    })
+    </script>
+</html>
