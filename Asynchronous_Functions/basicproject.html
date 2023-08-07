@@ -9,7 +9,7 @@
     <p style="text-align: center;">Click here to see magic</p>
 </body>
 <script>
-    document.getElementById('body').innerHTML= `
+    document.getElementById('body').addEventListener('keydown', (e) => {document.getElementById('body').innerHTML= `
     <div>
         <table border='1'>
             <thead>
@@ -17,9 +17,18 @@
                 <th>Type Code</th>
                 <th>Code</th>
             </thead>
+
+            <tbody>
+                <tr>
+                    <td>${e.key}</td>
+                    <td>${e.keyCode}</td>
+                    <td>${e.code}</td>
+                </tr>
+            </tbody>
         </table>
     <div>
-    `
+    `})    
+
     
     
 </script>
