@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="idCard"></div>
+</body>
+<script>
+    let imgURL=undefined;
+    let name = undefined;
+    let id = undefined;
+    let followers = undefined;
+    let following = undefined;
+    const requestURL = 'https://api.github.com/users/hiteshchoudhary';
+    let xhr = new  XMLHttpRequest();
+    xhr.open('GET', requestURL);
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4){
+            const data = JSON.parse(this.responseText);
+            //const data = this.responseText; // string
+            imgURL = String(data.avatar_url);
+            name = data.name;
+            id = data.id;
+            followers = data.followers;
+            following = data.following;
+            console.table(imgURL,name, id, followers, following)
+        }
+    }
+    xhr.send();
+    // document.getElementById('idCard').createElement = `
+    // <img src=${imgURL} alt='UserImage height='200' />
+    // `
+
+</script>
+</html>
