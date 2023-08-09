@@ -4,9 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        div{
+            background-color: grey;
+            border: 3px solid black ;
+            border-radius: 5vh;
+            width: 60vh;
+            padding: 10px;
+        }
+        img{
+            height: 175px;
+            width: 150px;
+        }
+        p{
+            font-size: 100%;
+        }
+        span{
+            color: wheat;
+        }
+        td{
+            padding-left: 10px;
+        }
+
+        
+    </style>
 </head>
 <body>
-    <div id="idCard"></div>
+    <div id="idCard">
+    </div>
 </body>
 <script>
     let imgURL=undefined;
@@ -14,25 +39,42 @@
     let id = undefined;
     let followers = undefined;
     let following = undefined;
-    const requestURL = 'https://api.github.com/users/hiteshchoudhary';
+    const requestURL = 'https://api.github.com/users/mkaran15';
     let xhr = new  XMLHttpRequest();
     xhr.open('GET', requestURL);
     xhr.onreadystatechange = function(){
         if(xhr.readyState === 4){
             const data = JSON.parse(this.responseText);
             //const data = this.responseText; // string
-            imgURL = String(data.avatar_url);
+            imgURL = data.avatar_url;
             name = data.name;
             id = data.id;
             followers = data.followers;
             following = data.following;
             console.table(imgURL,name, id, followers, following)
+            //document.getElementById('github-Image').setAttribute('src', imgURL);
+
+            document.getElementById('idCard').innerHTML=`
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                        <img src=${imgURL} id="github-Image" alt='User Image' />
+                        </td>
+                        <td>
+                        <p id='user-name'>Name: <span>${name}</span></p>
+                        <p id='user-id'>Id: <span>${id}</span></p>
+                        <p id='followers'>Followers: <span>${followers}</span></p>
+                        <p id='following'>Following: <span>${following}</span></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            `
         }
     }
     xhr.send();
-    // document.getElementById('idCard').createElement = `
-    // <img src=${imgURL} alt='UserImage height='200' />
-    // `
+    
 
 </script>
 </html>
