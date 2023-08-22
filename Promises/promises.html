@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises</title>
+</head>
+<body>
+    
+</body>
+<script>
+//creating a promise 1 : when no value is sent post resolved
+const promiseOne = new Promise((resolve, reject) => {
+    setTimeout(()=>{
+        console.log('Running... ');
+        resolve();
+    }, 3000);
+    
+}).then(() => {
+console.log('It is resolved');
+});
+
+//creating a promise 2: sending value when resolved
+const promiseTwo = new Promise((resolve, reject) => {
+    setTimeout(()=>{
+        console.log('Running... ');
+        resolve({username:'Karan', password:'12345'});
+    }, 3000);
+    
+}).then((user) => {
+console.log('Prmosise 2 is resolved: ', user);
+}) 
+
+//creating a promise 3 : When rejected
+const promiseThree = new Promise((resolve, reject) => {
+    setTimeout(()=>{
+        const error = true;
+    if(!error){ 
+        console.log('it is resolved')
+        resolve({username:'promiseThree', password:'1234'});
+    }else{
+        reject('Error: Somethig went wrong');
+    }
+    }, 3000)
+}).then((user) => {
+console.log('Prmosise 2 is resolved: ', user);
+}).catch((error)=>{
+console.log(error);
+}) 
+
+//creating a promise 4 : Chaining...
+const promiseFour = new Promise((resolve, reject) => {
+    setTimeout(()=>{
+        const error = false;
+    if(!error){ 
+        console.log('it is resolved')
+        resolve({username:'Administrator', password:'1234'});
+    }else{
+        reject('Error: Somethig went wrong');
+    }
+    }, 3000)
+}).then((user) => {
+    return user.username;
+    console.log('Prmosise 4 is resolved: ', user);
+}).then((username)=>{
+    console.log(username, ' is present now')
+}).catch((error)=>{
+    console.log(error);
+}) 
+
+</script>
+</html>
