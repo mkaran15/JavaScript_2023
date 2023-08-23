@@ -5,7 +5,7 @@ const testData = [
   {
     "login": "mkaran15",
     "id": 63113271,
-    "avatar_url": "https://avatars.githubusercontent.com/u/63113271?v=4",
+    "avatar_url": "https://assets.mspimages.in/gear/wp-content/uploads/2021/10/Untitled-design-35.png",
     "name": "Karan Maheshwari",
     "company": 'Accenture',
     "followers": 2,
@@ -23,8 +23,18 @@ const testData = [
   }
 ];
 
-const CardHolder = () => {
-  const data=testData[1];
+const CardList = (props) => {
+  return(
+    <div>
+      <CardHolder {...testData[0]}/>
+      <CardHolder {...testData[1]}/>
+    </div>
+    
+  );
+}
+
+const CardHolder = (props) => {
+  const data=props;
   return(
       <div className="image-placeholder">
         <img src={data.avatar_url} alt='Image-Placeholder' />  
@@ -41,7 +51,7 @@ const Card = props => {
   return(
     <div>
     <div className='header'>{props.title}</div>
-    <CardHolder />
+    <CardList />
     </div>
   );
 }
