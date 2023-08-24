@@ -1,5 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {Component} from 'react';
 
 const testData = [
   {
@@ -23,12 +23,22 @@ const testData = [
   }
 ];
 
+class Form extends React.Component{
+  render(){
+    return(
+      <form>
+        <input type="text" placeholder='Enter GitHub username' />
+        <button>Add User</button>
+      </form>
+    )
+  }
+}
+
+
 const CardList = (props) => {
   return(
-    <div>
-      <CardHolder {...testData[0]}/>
-      <CardHolder {...testData[1]}/>
-    </div>
+    props.profiles.map((profile) => <CardHolder {...profile}/>)
+    // <div><CardHolder {...testData[0]}/></div>
     
   );
 }
@@ -47,18 +57,38 @@ const CardHolder = (props) => {
 }
 
 
-const Card = props => {
-  return(
-    <div>
-    <div className='header'>{props.title}</div>
-    <CardList />
-    </div>
-  );
+class Card extends React.Component{
+  render(){
+    return(
+        <div className='header'>{this.props.title}</div>
+      );
+  }
 }
 
-const App = () => {
-  return (
-    <Card title="GitHub Card App"/>
-  );
+// const Card = props => {
+//   return(
+//     <div>
+//     <div className='header'>{props.title}</div>
+//     <CardList />
+//     </div>
+//   );
+// }
+
+// const App = () => {
+//   return (
+//     <Card title="GitHub Card App"/>
+//   );
+// }
+
+class App extends React.Component{
+  render(){
+    return (
+      <div>
+        <Card title="The Github Card App" />
+        <Form />
+        <CardList profiles={testData}/>
+      </div>
+    )
+  }
 }
 export default App;

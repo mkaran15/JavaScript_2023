@@ -19,3 +19,11 @@ img{
 .name{
   font-weight: 500;
 }
+form{
+  margin: 10px;
+  border: 1px black solid;
+  padding: 5% 12%;
+  background-color: rgb(245, 240, 240);
+  text-align: center;
+}
+
