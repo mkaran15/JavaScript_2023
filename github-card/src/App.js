@@ -43,7 +43,10 @@ handleInputChange = (event) => {
   await axios.get(`https://api.github.com/users/${this.state.inputVal}`)
   // console.log(this.inputRef.current.value);
 
-  console.log(response.data);
+  this.props.onSubmit(response.data);
+  
+  this.setState({inputVal:''});
+
  }
   render(){
     return(
@@ -109,12 +112,26 @@ class Card extends React.Component{
 // }
 
 class App extends React.Component{
+  state={
+    profiles:[]
+  }
+
+  addProfile = (newProfile) => {
+    this.setState(
+      prevState => (
+        {
+          profiles:[...prevState.profiles, newProfile],
+        }
+      )
+    )
+  }
+
   render(){
     return (
       <div>
         <Card title="The Github Card App" />
-        <Form />
-        <CardList profiles={testData}/>
+        <Form onSubmit={this.addProfile}/>
+        <CardList profiles={this.state.profiles}/>
       </div>
     )
   }
